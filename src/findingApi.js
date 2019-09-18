@@ -4,7 +4,7 @@ const urlObject = require('./buildURL');
 const { getRequest } = require('./request');
 
 const findItemsByKeywords = function (options) {
-    if (!options.keywords && !options) {
+    if (!options || !options.keywords) {
       throw new Error('Keyword is missing, Keyword is required');
     }
 
