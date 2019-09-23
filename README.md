@@ -19,7 +19,7 @@ The intent is to simplify the request process by handling the tedious logic. It'
 * [Usage](#usage)
 * [Examples](#examples)
   * [Getting Access Token](#getaccesstoken)
-  * [Finding Api(findItemsByKeywords, findItemsByCategory, findCompletedItems, getVersion)](#finding-api)
+  * [Finding Api(findItemsByKeywords, findItemsByCategory, findCompletedItems, findItemsByProduct, getVersion)](#finding-api)
   * [Fetch Items By Keyword](#fetchitemsbykeyword)
   * [Get Items By Category](#getitemsbycategory)
   * [Get Single Item](#getitem)
@@ -99,7 +99,7 @@ ebay.getAccessToken().then((data) => {
 
 ### Finding Api
 ```javascript
-//This call searches for items on eBay using specific eBay category ID numbers 
+//This call searches for items on eBay using specific eBay category ID numbers
 ebay.findItemsByCategory(10181).then((data) => {
     console.log(data);
 }, (error) => {
@@ -113,6 +113,18 @@ ebay.findItemsByKeywords('iphone').then((data) => {
     console.log(error);
 });
 
+
+ebay.findItemsByKeywords({
+    keywords: 'Garmin nuvi 1300 Automotive GPS Receiver',
+    sortOrder: 'PricePlusShippingLowest', //https://developer.ebay.com/devzone/finding/callref/extra/fndcmpltditms.rqst.srtordr.html
+    pageNumber: 2,
+    limit: 10
+}).then((data) => {
+    console.log(data);
+}, (error) => {
+    console.log(error);
+});
+
 // This call searches for items whose listings are completed and are no longer available for sale by category (using categoryId), by keywords (using keywords), or a combination of the two.
 ebay.findCompletedItems({
     keywords: 'Garmin nuvi 1300 Automotive GPS Receiver',
@@ -121,6 +133,15 @@ ebay.findCompletedItems({
     Condition: 3000,
     SoldItemsOnly: true,
     entriesPerPage: 2
+}).then((data) => {
+    console.log(data);
+}, (error) => {
+    console.log(error);
+});
+
+// https://developer.ebay.com/DevZone/finding/CallRef/findItemsByProduct.html#findItemsByProduct
+ebay.findItemsByProduct({
+    productId: 53039031
 }).then((data) => {
     console.log(data);
 }, (error) => {
@@ -292,7 +313,7 @@ ebay.getAllCategories('1234').then((data) => {
     console.log(error);
 });
 
-// Get User Profile 
+// Get User Profile
 //https://developer.ebay.com/devzone/shopping/docs/callref/GetUserProfile.html
 ebay.getUserDetails({ userId: 'ajaykumapratha_0', details: true }).then((data) => {
     console.log(data);
