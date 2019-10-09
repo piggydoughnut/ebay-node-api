@@ -6,7 +6,8 @@ const { getItem,
 const { getAllCategories,
     getShippingCosts,
     getItemStatus,
-    getUserDetails } = require('./shopping');
+    getUserDetails,
+    getSingleItem } = require('./shopping');
 const { getDefaultCategoryTreeId,
     getCategoryTree,
     getCategorySubtree,
@@ -80,7 +81,8 @@ Ebay.prototype = {
     getAllCategories,
     getShippingCosts,
     getItemStatus,
-    getUserDetails
+    getUserDetails,
+    getSingleItem
 };
 
 module.exports = Ebay;

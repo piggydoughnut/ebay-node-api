@@ -321,6 +321,19 @@ ebay.getUserDetails({ userId: 'ajaykumapratha_0', details: true }).then((data) =
     console.log(error);
 });
 
+// Get Single Item
+//https://developer.ebay.com/devzone/shopping/docs/callref/GetSingleItem.html
+let options = {
+  ItemID: '153265274986',
+  IncludeSelector: 'Details' // if not specified all values are inserted (Details, temSpecifics,Description,Compatibility,Variations,ShippingCosts,TextDescription)
+  //more info on IncludeSelector https://developer.ebay.com/devzone/shopping/docs/callref/GetSingleItem.html#Request.IncludeSelector
+};
+ebay.getSingleItem(options).then((data) => {
+    console.log(data);
+}, (error) => {
+    console.log(error);
+});
+
 // Get Item Status
 //https://developer.ebay.com/devzone/shopping/docs/callref/GetItemStatus.html
 ebay.getItemStatus(['153265274986', '153265274986']).then((data) => {

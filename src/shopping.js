@@ -58,9 +58,30 @@ const getShippingCosts = function (input) {
     );
 };
 
+const getSingleItem = function (options) {
+    if (!options.ItemID) {
+        throw new Error('Missing itemId in the options parameters.');
+    }
+    if (!options.IncludeSelector) {
+        options.IncludeSelector = 'Details, temSpecifics,Description,Compatibility,Variations,ShippingCosts,TextDescription';
+    }
+    this.options.operationName = 'GetSingleItem';
+    this.options.param = 'ItemID';
+    this.options.name = options.ItemID;
+    let url = urlObject.buildShoppingUrl(this.options);
+    url += '&IncludeSelector=' + options.IncludeSelector
+    console.log(url)
+    return getRequest(url)
+        .then((data) => {
+            return JSON.parse(data);
+        })
+        .catch(e => console.error(e));
+};
+
 module.exports = {
     getAllCategories,
     getUserDetails,
     getItemStatus,
-    getShippingCosts
+    getShippingCosts,
+    getSingleItem
 };
