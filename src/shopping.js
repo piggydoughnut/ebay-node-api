@@ -69,7 +69,6 @@ const getSingleItem = function (options) {
     this.options.param = 'ItemID';
     this.options.name = options.ItemID;
     let url = urlObject.buildShoppingUrl(this.options);
-    url += '&IncludeSelector=' + options.IncludeSelector
     console.log(url)
     return getRequest(url)
         .then((data) => {
