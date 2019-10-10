@@ -63,7 +63,7 @@ const getSingleItem = function (options) {
         throw new Error('Missing itemId in the options parameters.');
     }
     if (!options.IncludeSelector) {
-        options.IncludeSelector = 'Details, temSpecifics,Description,Compatibility,Variations,ShippingCosts,TextDescription';
+        options.IncludeSelector = 'Details,ItemSpecifics,Description,Compatibility,Variations,ShippingCosts,TextDescription';
     }
     this.options.operationName = 'GetSingleItem';
     this.options.param = 'ItemID';
