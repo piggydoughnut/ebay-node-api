@@ -65,7 +65,6 @@ const getSingleItem = function (options) {
     this.options.operationName = 'GetSingleItem';
     this.options.param = 'ItemID';
     this.options.name = options.ItemID;
-    this.options.includeSelector = options.IncludeSelector
     let url = urlObject.buildShoppingUrl(this.options);
     console.log(url)
     return getRequest(url)
