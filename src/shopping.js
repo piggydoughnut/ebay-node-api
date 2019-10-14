@@ -62,11 +62,11 @@ const getSingleItem = function (options) {
     if (!options.ItemID) {
         throw new Error('Missing itemId in the options parameters.');
     }
+    this.options.includeSelector = options.IncludeSelector
     this.options.operationName = 'GetSingleItem';
     this.options.param = 'ItemID';
     this.options.name = options.ItemID;
     let url = urlObject.buildShoppingUrl(this.options);
-    console.log(url)
     return getRequest(url)
         .then((data) => {
             return JSON.parse(data);
