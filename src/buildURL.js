@@ -35,7 +35,10 @@ const buildURL = {
    * @return {String} url
    * @private
    */
-    buildShoppingUrl(options) {
+    buildShoppingUrl(options, includeSelector) {
+        if (!options.includeSelector) {
+            options.includeSelector = 'Details';
+        }
         let baseUrl = `https://${options.baseUrl}/Shopping?`;
         baseUrl += 'appid=' + options.clientID;
         baseUrl += '&callname=' + options.operationName;
@@ -49,4 +52,3 @@ const buildURL = {
 };
 
 module.exports = buildURL;
-
